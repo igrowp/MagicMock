@@ -5,6 +5,6 @@ import client from '@/utils/client';
 
 export default {
   getUserInfo() {
-    client.get('/user/info');
-  }
+    return client.get('/index');
+  },
 };

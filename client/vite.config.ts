@@ -34,5 +34,15 @@ export default defineConfig({
         }
       ]
     })
-  ]
+  ],
+  server: {
+    proxy: {
+      '/api': {
+        // target: 'https://yapi.baidu-int.com/',
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+        rewrite: (path: any) => path.replace(/^\/api/, '')
+      }
+    }
+  }
 });
