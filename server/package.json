@@ -3,10 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev:tsc": "tsc -w",
-    "dev:nodemon": "cross-env PORT=3001 nodemon build/bin/www",
-    "dev": "tsc && concurrently npm:dev:*",
-    "start": "nodemon --watch src -e ts,tsx --exec ts-node src/app.ts"
+    "dev": "nodemon --watch src -e ts,tsx --exec ts-node src/app.ts",
+    "start": "tsc && node build/app.js"
   },
   "dependencies": {
     "argon2": "^0.28.5",

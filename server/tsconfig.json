@@ -1,21 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext",
     "module": "commonjs",
-    "allowJs": true,
-    "outDir": "./build",
+    "outDir": "build",
     "rootDir": "./src",
-    "strict": false,
+    "removeComments": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
-    "strictPropertyInitialization": false,
     "emitDecoratorMetadata": true
   },
-  "exclude": [
-    "node_modules",
-    "views",
-    "public",
-    "build"
-  ]
+  "exclude": ["node_modules"]
 }
