@@ -1,0 +1,5 @@
+client/node_modules
+client/src/lib/*
+client/typings
+
+server/node_modules

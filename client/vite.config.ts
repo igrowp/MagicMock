@@ -36,12 +36,13 @@ export default defineConfig({
     })
   ],
   server: {
+    port: 8088, //指定端口号
     proxy: {
       '/api': {
-        // target: 'https://yapi.baidu-int.com/',
-        target: 'http://localhost:3001',
-        changeOrigin: true,
-        rewrite: (path: any) => path.replace(/^\/api/, '')
+        // target: 'http://localhost:8700',
+        target: 'http://82.156.174.231:8010',
+        changeOrigin: true
+        // rewrite: (path: any) => path.replace(/^\/api/, '')
       }
     }
   }

@@ -10,7 +10,10 @@
     "src"
   ],
   "env": {
-    "APP_ENV": "dev"
+    "APP_ENV": "dev",
+    "DB_NAME": "magic_mock",
+    "DB_ACCOUNT": "root",
+    "DB_PASSWORD": "123456"
   },
   "ext": "js,json,ts"
 }

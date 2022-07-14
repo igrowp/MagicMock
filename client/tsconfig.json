@@ -5,7 +5,7 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "types": ["vite/client"],
     "allowJs": false,
-    "skipLibCheck": false,
+    "skipLibCheck": true,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
@@ -22,6 +22,5 @@
     },
     "typeRoots": ["./typings/", "./node_modules/@types/"]
   },
-  "include": ["./src", "./typings", "./vite.config.ts"],
   "exclude": ["node_modules"]
 }
