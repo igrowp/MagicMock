@@ -1,0 +1,72 @@
+.@{prefix}-header {
+  display: flex;
+  height: 56px;
+  width: 100%;
+
+  &-left {
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  &-center {
+    flex: 1;
+  }
+
+  &-right {
+    width: 300px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .task-icon {
+      display: flex;
+      align-items: center;
+      height: 24px;
+      margin-right: 32px;
+      cursor: pointer;
+    }
+
+    .account-wrapper {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      height: 24px;
+    }
+
+    .login-btn {
+      padding-right: 8px;
+    }
+  }
+  .action-with-icon.task-icon svg use {
+    fill: #323333;
+  }
+}
+
+// 用户信息
+.user-info-popover {
+  .@{ant-prefix}-popover-inner-content {
+    padding: 0;
+  }
+  .user-info-content {
+    width: 148px;
+    .user-info-name {
+      height: 51px;
+      margin: 0 16px;
+      border-bottom: 1px solid #d8d8d8;
+    }
+
+    .user-info-footer {
+      cursor: pointer;
+      padding: 0 16px;
+      &:hover {
+        background-color: #e9effd;
+      }
+    }
+
+    & > div {
+      display: flex;
+      align-items: center;
+      height: 50px;
+    }
+  }
+}

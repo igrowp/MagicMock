@@ -4,7 +4,10 @@
 import client from '@/utils/client';
 
 export default {
+  login(params: {name: string; password: string}) {
+    return client.post('/login', params);
+  },
   getUserInfo() {
-    return client.get('/users');
+    return client.get('/user/list');
   }
 };

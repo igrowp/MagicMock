@@ -14,8 +14,9 @@ export default defineConfig({
     preprocessorOptions: {
       less: {
         // 支持内联 JavaScript
-        javascriptEnabled: true
-        // modifyVars: { 'primary-color': '#13c2c2' },
+        javascriptEnabled: true,
+        additionalData: '@import "./src/styles/var.less";',
+        modifyVars: {'ant-prefix': 'mlib'}
       }
     },
     modules: {
@@ -39,10 +40,9 @@ export default defineConfig({
     port: 8088, //指定端口号
     proxy: {
       '/api': {
-        // target: 'http://localhost:8700',
-        target: 'http://82.156.174.231:8010',
-        changeOrigin: true
-        // rewrite: (path: any) => path.replace(/^\/api/, '')
+        target: 'http://localhost:8700',
+        changeOrigin: true,
+        rewrite: (path: any) => path.replace(/^\/api/, '')
       }
     }
   }
