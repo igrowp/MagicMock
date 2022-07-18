@@ -1,0 +1,24 @@
+{
+  "name": "magic-mock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently 'npm:client' 'npm:server'",
+    "client": "cd client && npm run dev",
+    "server": "cd server && npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igrowp/MagicMock.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/igrowp/MagicMock/issues"
+  },
+  "homepage": "https://github.com/igrowp/MagicMock#readme",
+  "devDependencies": {
+    "concurrently": "^7.2.2"
+  }
+}

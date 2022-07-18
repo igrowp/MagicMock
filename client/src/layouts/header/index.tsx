@@ -8,7 +8,7 @@ import './index.less';
 const prefixCls = classCreator('header');
 const getAvator = (userName?: string) => (
   <div className="avatar">
-    {userName ? userName.charAt(0).toUpperCase() : <SvgIcon iconClass="avatoar-user" width={24} />}
+    {userName ? userName.charAt(0).toUpperCase() : <SvgIcon name="avatar-user" width={24} />}
   </div>
 );
 
@@ -24,7 +24,7 @@ const Header = () => {
       <div className={`${prefixCls}-left`}>
         <h1>Magic Mock</h1>
       </div>
-      <div className={`${prefixCls}-center`}></div>
+      <div className={`${prefixCls}-center`} />
       <div className={`${prefixCls}-right`}>
         {!userName ? (
           <Popover
@@ -44,7 +44,7 @@ const Header = () => {
           >
             <div className="account-wrapper">
               {getAvator(userName)}
-              <SvgIcon iconClass="solid-arrow-down" />
+              <SvgIcon name="solid-arrow-down" />
             </div>
           </Popover>
         ) : (

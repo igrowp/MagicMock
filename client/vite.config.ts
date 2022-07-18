@@ -2,6 +2,7 @@ import {defineConfig} from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import vitePluginImp from 'vite-plugin-imp';
+import {svgBuilder} from './src/plugins/svgBuilder';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -27,6 +28,7 @@ export default defineConfig({
   },
   plugins: [
     react(),
+    svgBuilder('./src/assets/icons/'),
     vitePluginImp({
       libList: [
         {

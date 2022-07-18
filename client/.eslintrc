@@ -17,5 +17,10 @@
   "rules": {
     // Customize your rules
     "@typescript-eslint/explicit-member-accessibility": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }
