@@ -4,7 +4,7 @@
 import client from '@/utils/client';
 
 export default {
-  login(params: {name: string; password: string}) {
+  login(params: {name: string; password: string}): Promise<{token: string}> {
     return client.post('/login', params);
   },
   getUserInfo(): Promise<IUser> {

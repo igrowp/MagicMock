@@ -4,7 +4,6 @@
 
 import apis from '@/apis';
 import {classCreator} from '@/utils';
-import store, {getKey} from '@/utils/store';
 import {useNavigate} from 'react-router-dom';
 import {Form, Input, Checkbox, Button, notification} from 'antd';
 import {CheckboxChangeEvent} from 'antd/lib/checkbox';
@@ -12,7 +11,7 @@ import React, {useEffect, useState} from 'react';
 import './index.less';
 
 const prefixCls = classCreator('login');
-const STORE_KEY = 'account';
+const STORE_KEY = '__account';
 
 const Login = () => {
   const [name, setName] = useState('');
@@ -27,10 +26,9 @@ const Login = () => {
 
   const initData = () => {
     try {
-      let account = store.get(STORE_KEY);
+      let account: any = localStorage.getItem(STORE_KEY);
       account = account ? JSON.parse(account) : {};
       const {name, password, autoFill} = account;
-      console.log(autoFill);
       setAutoFill(autoFill);
       name !== undefined && setName(name);
       password !== undefined && setPassword(password);
@@ -41,7 +39,7 @@ const Login = () => {
         autoFill
       });
     } catch (error) {
-      console.error(`解析本地存储数据出错：${getKey()} -> ${STORE_KEY}`);
+      console.error(`解析本地存储数据出错：${STORE_KEY}`);
     }
   };
 
@@ -63,7 +61,7 @@ const Login = () => {
 
       // 处理记录密码
       if (autoFill) {
-        store.set(
+        localStorage.setItem(
           STORE_KEY,
           JSON.stringify({
             name,
@@ -72,14 +70,16 @@ const Login = () => {
           })
         );
       } else {
-        store.remove(STORE_KEY);
+        localStorage.removeItem(STORE_KEY);
       }
 
       // 登录
-      await apis.login({
+      const res = await apis.login({
         name,
         password
       });
+      const token = res.token || '';
+      localStorage.setItem('__token', token);
       navigate('/');
     } catch (error) {
       console.log('err');

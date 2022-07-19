@@ -22,7 +22,10 @@ export default class AuthController {
     if (!user) {
       throw new UnauthorizedException('用户不存在');
     } else if (await argon2.verify(user.password, body.password)) {
-      return responseBody({token: jwt.sign({id: user.id}, JWT_SECRET)});
+      const token = jwt.sign({id: user.id}, JWT_SECRET, {
+        expiresIn: 60 * 60 // 60 * 60s
+      });
+      return responseBody({token});
     } else {
       throw new UnauthorizedException('密码错误');
     }

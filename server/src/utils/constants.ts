@@ -1,4 +1,4 @@
-export const JWT_SECRET = 'gsIia1B0O2BkoRrOQcMA';
+export const JWT_SECRET = process.env.JWT_SECRET;
 
 // 正则校验
 export const REGULARS = {

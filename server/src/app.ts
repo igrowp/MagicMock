@@ -26,6 +26,14 @@ createConnection()
     // logger
     app.use(customLogger());
 
+    // 鉴权
+    app.use(
+      jwt({secret: JWT_SECRET}).unless({
+        // 配置白名单
+        path: [/\/register/, /\/login/]
+      })
+    );
+
     // routes
     app.use(router.routes()).use(router.allowedMethods());
     // app.use(unprotectedRouter.routes()).use(unprotectedRouter.allowedMethods());

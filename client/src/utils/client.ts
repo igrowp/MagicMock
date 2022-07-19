@@ -3,7 +3,9 @@
  * @author wutong (wutong25@baidu.com)
  */
 
+import {notification} from 'antd';
 import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
+import {get} from 'lodash';
 export type {AxiosResponse};
 
 const request = axios.create({
@@ -12,6 +14,8 @@ const request = axios.create({
 });
 // 请求拦截器
 const requestInterceptor = (req: AxiosRequestConfig) => {
+  const token = localStorage.getItem('__token');
+  (req.headers?.common as any)['Authorization'] = `Bearer ${token}`;
   return req;
 };
 
@@ -22,6 +26,18 @@ const responseInterceptor = (res: AxiosResponse<any>): any => {
 
 // 响应异常拦截器
 const responseErrorInterceptor = (error: any) => {
+  const res = error.response;
+  if (res) {
+    switch (res.status) {
+      case 401:
+        location.href = '/login';
+        break;
+      default:
+        notification.error(get(res, 'data.message') || '服务端异常');
+        break;
+    }
+  }
+  console.log('error', error);
   return Promise.reject(error);
 };
 

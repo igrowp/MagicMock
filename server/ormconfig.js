@@ -3,7 +3,7 @@ const appIsDev = env.APP_ENV === 'dev';
 module.exports = {
   type: 'mysql',
   host: 'localhost',
-  port: 3307,
+  port: env.DB_PORT,
   username: env.DB_ACCOUNT,
   password: env.DB_PASSWORD,
   database: env.DB_NAME,

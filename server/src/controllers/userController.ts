@@ -18,8 +18,10 @@ export default class UserController {
 
     return responseBody(users);
   }
-  @Get('/:id')
-  async showUserDetail(@Params() id: string) {
+  @Get()
+  async showUserDetail(@Params() id: string, @Ctx ctx: IContext) {
+    console.log('id', ctx.state.user.id);
+
     const userRepository = getManager().getRepository(User);
     const user = await userRepository.findOne(id);
 

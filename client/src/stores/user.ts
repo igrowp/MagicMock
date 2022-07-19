@@ -8,6 +8,9 @@ class UserStore {
 
   async getUserInfo() {
     try {
+      if (this.user?.name) {
+        return;
+      }
       const user = await apis.getUserInfo();
       runInAction(() => {
         this.user = user;
