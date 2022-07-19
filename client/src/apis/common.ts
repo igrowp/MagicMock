@@ -7,7 +7,7 @@ export default {
   login(params: {name: string; password: string}) {
     return client.post('/login', params);
   },
-  getUserInfo() {
-    return client.get('/user/list');
+  getUserInfo(): Promise<IUser> {
+    return client.get('/user');
   }
 };

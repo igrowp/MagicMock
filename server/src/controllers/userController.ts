@@ -7,7 +7,7 @@ import {NotFoundException, ForbiddenException} from '../exceptions';
 
 import {responseBody} from './../utils/index';
 import {User} from '../entitys/user';
-import {Controller, Ctx, Get} from '../decorators/controller';
+import {Body, Controller, Ctx, Delete, Get, IContext, Params, Put} from '../decorators/controller';
 
 @Controller('/user')
 export default class UserController {
@@ -16,12 +16,12 @@ export default class UserController {
     const userRespository = getManager().getRepository(User);
     const users = userRespository.find();
 
-    ctx.status = 200;
-    ctx.body = users;
+    return responseBody(users);
   }
-  public static async showUserDetail(ctx: Context) {
+  @Get('/:id')
+  async showUserDetail(@Params() id: string) {
     const userRepository = getManager().getRepository(User);
-    const user = await userRepository.findOne(+ctx.params.id);
+    const user = await userRepository.findOne(id);
 
     if (user) {
       return responseBody(user);
@@ -30,15 +30,16 @@ export default class UserController {
     }
   }
 
-  public static async updateUser(ctx: Context) {
-    const userId = +ctx.params.id;
+  @Put('/:id')
+  async updateUser(@Body body: User, @Params() id: string, @Ctx ctx: IContext) {
+    const userId = +id;
 
     if (userId !== +ctx.state.user.id) {
       throw new ForbiddenException();
     }
 
     const userRepository = getManager().getRepository(User);
-    await userRepository.update(userId, ctx.request.body);
+    await userRepository.update(userId, body);
     const updatedUser = await userRepository.findOne(userId);
 
     if (updatedUser) {
@@ -48,8 +49,9 @@ export default class UserController {
     }
   }
 
-  public static async deleteUser(ctx: Context) {
-    const userId = +ctx.params.id;
+  @Delete('/:id')
+  async deleteUser(@Params() id: string, @Ctx ctx: IContext) {
+    const userId = +id;
 
     if (userId !== +ctx.state.user.id) {
       throw new ForbiddenException();

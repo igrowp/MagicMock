@@ -17,7 +17,7 @@ const requestInterceptor = (req: AxiosRequestConfig) => {
 
 // 响应拦截器
 const responseInterceptor = (res: AxiosResponse<any>): any => {
-  return res.data;
+  return res.data.data;
 };
 
 // 响应异常拦截器
