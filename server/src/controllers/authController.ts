@@ -17,7 +17,6 @@ export default class AuthController {
   async login(@Body body: {name: string; password: string}) {
     const userRepository = getManager().getRepository(User);
     const user = await userRepository.createQueryBuilder().where({name: body.name}).addSelect('User.password').getOne();
-    console.log('user', user);
 
     if (!user) {
       throw new UnauthorizedException('用户不存在');
@@ -46,6 +45,7 @@ export default class AuthController {
 
     // 保存到数据库
     const user = await userRepository.save(newUser);
+    delete user.password;
     return responseBody(user);
   }
 }

@@ -19,8 +19,8 @@ export default class UserController {
     return responseBody(users);
   }
   @Get()
-  async showUserDetail(@Params() id: string, @Ctx ctx: IContext) {
-    console.log('id', ctx.state.user.id);
+  async showUserDetail(@Ctx ctx: IContext) {
+    const id = ctx.state.user.id;
 
     const userRepository = getManager().getRepository(User);
     const user = await userRepository.findOne(id);

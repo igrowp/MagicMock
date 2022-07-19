@@ -88,6 +88,10 @@ const Login = () => {
       });
     }
   };
+
+  const handleRegister = () => {
+    navigate('/register');
+  };
   return (
     <div className={prefixCls}>
       <div className={`${prefixCls}-wrapper`}>
@@ -108,8 +112,11 @@ const Login = () => {
             <Checkbox onChange={handleAutoFillChanged}>记住密码</Checkbox>
           </Form.Item>
           <Form.Item wrapperCol={{offset: 8, span: 16}}>
-            <Button type="primary" htmlType="submit" onClick={handleSubmit}>
+            <Button className="btn-login" type="primary" htmlType="submit" onClick={handleSubmit}>
               登录
+            </Button>
+            <Button type="primary" onClick={handleRegister}>
+              注册
             </Button>
           </Form.Item>
         </Form>

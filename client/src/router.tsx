@@ -7,6 +7,7 @@ import {useRoutes} from 'react-router-dom';
 import AppLayout from './layouts';
 
 const Login = lazy(() => import('./pages/login'));
+const Register = lazy(() => import('./pages/register'));
 
 const lazyLoad = (children: ReactNode): ReactNode => {
   return <Suspense fallback={<h1>Loading...</h1>}>{children}</Suspense>;
@@ -28,6 +29,10 @@ const Router = () =>
     {
       path: 'login',
       element: <Login />
+    },
+    {
+      path: 'register',
+      element: <Register />
     }
   ]);
 
