@@ -8,7 +8,6 @@ import {Outlet} from 'react-router';
 const {Header, Content} = Layout;
 
 const SysLayout = (children: any) => {
-  console.log('render');
   return (
     <Layout>
       <Header>

@@ -32,7 +32,6 @@ const Login = () => {
       setAutoFill(autoFill);
       name !== undefined && setName(name);
       password !== undefined && setPassword(password);
-      console.log('accoutn', account);
       form.setFieldsValue({
         name,
         password,
@@ -82,7 +81,6 @@ const Login = () => {
       localStorage.setItem('__token', token);
       navigate('/');
     } catch (error) {
-      console.log('err');
       notification.error({
         message: '账号或密码错误'
       });

@@ -37,7 +37,6 @@ const responseErrorInterceptor = (error: any) => {
         break;
     }
   }
-  console.log('error', error);
   return Promise.reject(error);
 };
 
