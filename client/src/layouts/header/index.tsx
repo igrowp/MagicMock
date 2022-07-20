@@ -9,7 +9,7 @@ import {useStores} from '@/hooks';
 
 const prefixCls = classCreator('header');
 
-const Header = () => {
+const AppHeader = () => {
   const userStore = useStores('userStore');
   // const navigate = useNavigate();
 
@@ -62,4 +62,4 @@ const Header = () => {
   );
 };
 
-export default observer(Header);
+export default observer(AppHeader);

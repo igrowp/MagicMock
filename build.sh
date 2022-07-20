@@ -5,8 +5,8 @@ echo "npm: v$(npm -v)"
 
 npm install;
 
-cd client && npm install;
+cd client && npm run build;
 
-cd ../server && npm install;
+cd ../server && npm run build;
 
-cd .. && npm run dev;
+cd ..;

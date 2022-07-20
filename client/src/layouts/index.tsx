@@ -2,16 +2,16 @@
  * @file 布局
  */
 import React, {ReactNode} from 'react';
-import SysHeader from './header';
+import AppHeader from './header';
 import {Layout} from 'antd';
 import {Outlet} from 'react-router';
 const {Header, Content} = Layout;
 
-const SysLayout = (children: any) => {
+const AppLayout = (children: any) => {
   return (
     <Layout>
       <Header>
-        <SysHeader />
+        <AppHeader />
       </Header>
       <Content>
         <Outlet />
@@ -20,4 +20,4 @@ const SysLayout = (children: any) => {
   );
 };
 
-export default SysLayout;
+export default AppLayout;
