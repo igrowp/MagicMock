@@ -30,18 +30,14 @@ document.addEventListener(
   true
 );
 
-const App = () => {
-  return (
-    <React.StrictMode>
-      <ConfigProvider prefixCls={ANTD_PREFIX_CLS} locale={locale}>
-        <Provider stores={stores}>
-          <BrowserRouter>
-            <Router />
-          </BrowserRouter>
-        </Provider>
-      </ConfigProvider>
-    </React.StrictMode>
-  );
-};
-
-ReactDOM.createRoot(document.getElementById('root')!).render(<App />);
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <ConfigProvider prefixCls={ANTD_PREFIX_CLS} locale={locale}>
+      <Provider stores={stores}>
+        <BrowserRouter>
+          <Router />
+        </BrowserRouter>
+      </Provider>
+    </ConfigProvider>
+  </React.StrictMode>
+);

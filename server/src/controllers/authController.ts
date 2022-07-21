@@ -37,6 +37,15 @@ export default class AuthController {
       throw new ParamsException('邮箱格式错误');
     }
     const userRepository = getManager().getRepository(User);
+    const existUser = await userRepository
+      .createQueryBuilder()
+      .having('name = :name', {name: body.name})
+      .orHaving('email = :email', {email: body.email})
+      .getOne();
+
+    if (existUser) {
+      throw new ParamsException('用户已存在');
+    }
 
     const newUser = new User();
     newUser.name = name;

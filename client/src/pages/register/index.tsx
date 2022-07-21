@@ -31,18 +31,16 @@ const Register = () => {
   };
 
   const handleSubmit = async () => {
-    try {
-      await form.validateFields();
+    await form.validateFields();
 
-      // 注册
-      await apis.register({
-        name,
-        password,
-        email
-      });
-      notification.success({message: '注册成功'});
-      navigate('/login');
-    } catch (error) {}
+    // 注册
+    await apis.register({
+      name,
+      password,
+      email
+    });
+    notification.success({message: '注册成功'});
+    navigate('/login');
   };
   return (
     <div className={prefixCls}>

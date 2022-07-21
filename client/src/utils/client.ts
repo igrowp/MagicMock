@@ -33,7 +33,7 @@ const responseErrorInterceptor = (error: any) => {
         location.href = '/login';
         break;
       default:
-        notification.error(get(res, 'data.message') || '服务端异常');
+        notification.error({message: get(res, 'data.message') || '服务端异常'});
         break;
     }
   }

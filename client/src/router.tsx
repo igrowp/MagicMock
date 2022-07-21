@@ -2,12 +2,12 @@
  * @file 路由
  */
 import React, {lazy, Suspense, ReactNode} from 'react';
-import Home from '@/pages/home';
 import {useRoutes} from 'react-router-dom';
 import AppLayout from './layouts';
+import Login from './pages/login';
+import Register from './pages/register';
 
-const Login = lazy(() => import('./pages/login'));
-const Register = lazy(() => import('./pages/register'));
+const Home = lazy(() => import('./pages/home'));
 
 const lazyLoad = (children: ReactNode): ReactNode => {
   return <Suspense fallback={<h1>Loading...</h1>}>{children}</Suspense>;
@@ -27,11 +27,11 @@ const Router = () =>
       ]
     },
     {
-      path: 'login',
+      path: '/login',
       element: <Login />
     },
     {
-      path: 'register',
+      path: '/register',
       element: <Register />
     }
   ]);

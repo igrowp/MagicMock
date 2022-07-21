@@ -3,11 +3,10 @@ import bodyparser from 'koa-bodyparser';
 import {createConnection} from 'typeorm';
 import path from 'path';
 import jwt from 'koa-jwt';
-// import {unprotectedRouter, loadRouters} from './routes/index';
 import {logger as customLogger} from './logger';
-import 'reflect-metadata';
 import router from './routes';
 import {JWT_SECRET} from './utils/constants';
+import 'reflect-metadata';
 
 createConnection()
   .then(() => {
@@ -34,14 +33,6 @@ createConnection()
       })
     );
 
-    // routes
-    app.use(router.routes()).use(router.allowedMethods());
-    // app.use(unprotectedRouter.routes()).use(unprotectedRouter.allowedMethods());
-    // // 注册鉴权JWT中间件
-    // // app.use(jwt({secret: JWT_SECRET}));
-    // // 需要JWT才能访问的接口
-    // loadRouters(app);
-
     // error-handling
     app.use(async (ctx, next) => {
       try {
@@ -49,9 +40,15 @@ createConnection()
       } catch (err) {
         // 只返回 JSON 格式的响应
         ctx.status = err.status || 500;
-        ctx.body = {message: err.message};
+        ctx.body = {
+          status: 1,
+          message: err.message
+        };
       }
     });
+
+    // routes
+    app.use(router.routes()).use(router.allowedMethods());
 
     app.listen(8700);
   })
