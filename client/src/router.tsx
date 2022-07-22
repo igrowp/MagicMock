@@ -2,7 +2,7 @@
  * @file 路由
  */
 import React, {lazy, Suspense, ReactNode} from 'react';
-import {useRoutes} from 'react-router-dom';
+import {BrowserRouter, useRoutes} from 'react-router-dom';
 import AppLayout from './layouts';
 import Login from './pages/login';
 import Register from './pages/register';
@@ -13,7 +13,7 @@ const lazyLoad = (children: ReactNode): ReactNode => {
   return <Suspense fallback={<h1>Loading...</h1>}>{children}</Suspense>;
 };
 
-const Router = () =>
+const AppRoutes = () =>
   useRoutes([
     {
       path: '/',
@@ -35,5 +35,11 @@ const Router = () =>
       element: <Register />
     }
   ]);
+
+const Router = () => (
+  <BrowserRouter>
+    <AppRoutes />
+  </BrowserRouter>
+);
 
 export default Router;

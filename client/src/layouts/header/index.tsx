@@ -4,20 +4,20 @@ import {Popover} from 'antd';
 import React, {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router';
 import {observer} from 'mobx-react';
-import './index.less';
 import {useStores} from '@/hooks';
+import './index.less';
 
 const prefixCls = classCreator('header');
 
 const AppHeader = () => {
   const userStore = useStores('userStore');
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     userStore.getUserInfo();
   }, []);
-  const logout = () => {
-    location.href = '/login';
+  const handleLogout = () => {
+    navigate('/login');
   };
 
   const getAvator = () => {
@@ -43,7 +43,7 @@ const AppHeader = () => {
                   {getAvator()}
                   <span className="epplipsis">{userStore.user?.name}</span>
                 </div>
-                <div className="user-info-footer" onClick={logout}>
+                <div className="user-info-footer" onClick={handleLogout}>
                   退出登录
                 </div>
               </div>
