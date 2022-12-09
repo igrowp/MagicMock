@@ -5,7 +5,8 @@ import React, {ReactNode} from 'react';
 import AppHeader from './header';
 import {Layout} from 'antd';
 import {Outlet} from 'react-router';
-const {Header, Content} = Layout;
+import AppFooter from './footer';
+const {Header, Content, Footer} = Layout;
 
 const AppLayout = (children: any) => {
   return (
@@ -16,6 +17,9 @@ const AppLayout = (children: any) => {
       <Content>
         <Outlet />
       </Content>
+      <Footer>
+        <AppFooter />
+      </Footer>
     </Layout>
   );
 };

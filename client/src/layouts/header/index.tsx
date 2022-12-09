@@ -30,7 +30,9 @@ const AppHeader = () => {
   };
   return (
     <div className={prefixCls}>
-      <div className={`${prefixCls}-left`}>{/* <h1>Magic Mock</h1> */}</div>
+      <div className={`${prefixCls}-left`}>
+        <h1>Magic Mock</h1>
+      </div>
       <div className={`${prefixCls}-center`} />
       <div className={`${prefixCls}-right`}>
         {userStore.user?.name ? (

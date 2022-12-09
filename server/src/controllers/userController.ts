@@ -20,7 +20,7 @@ export default class UserController {
   }
   @Get()
   async showUserDetail(@Ctx ctx: IContext) {
-    const id = ctx.state.user.id;
+    const id = ctx.state.user?.id;
 
     const userRepository = getManager().getRepository(User);
     const user = await userRepository.findOne(id);

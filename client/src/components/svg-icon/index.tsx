@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {classCreator} from '@/utils';
+import cx from 'classnames';
 import './index.less';
 
 interface IProps {
@@ -52,7 +53,7 @@ const SvgIcon = ({name, fill, size = 'normal', width, height, className, onClick
   }, [width, height, size]);
 
   return (
-    <svg style={svgStyle} className={`${prefixCls}${className ? ' ' + className : ''}`} onClick={e => onClick?.(e)}>
+    <svg style={svgStyle} className={cx(prefixCls, className)} onClick={e => onClick?.(e)}>
       <use xlinkHref={'#icon-' + name} fill={fill} />
     </svg>
   );
